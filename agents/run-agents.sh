@@ -14,9 +14,11 @@ BRANCH="${BRANCH:-agents/electmotion}"
 BASE_BRANCH="${BASE_BRANCH:-main}"
 WORKTREE="${WORKTREE:-$(dirname "$REPO")/EgyWeb-electmotion-agents}"
 PUSH="${PUSH:-0}"
-MODEL="${MODEL:-}"
-SLEEP_BETWEEN="${SLEEP_BETWEEN:-60}"
-IDLE_SLEEP="${IDLE_SLEEP:-1800}"
+MODEL="${MODEL:-claude-sonnet-5}"
+EFFORT="${EFFORT:-medium}"
+MAX_BUDGET_USD="${MAX_BUDGET_USD:-}"  # per-iteration cap (API billing only)
+SLEEP_BETWEEN="${SLEEP_BETWEEN:-300}"
+IDLE_SLEEP="${IDLE_SLEEP:-7200}"
 ITERATION_TIMEOUT="${ITERATION_TIMEOUT:-2700}"
 MAX_ITERATIONS="${MAX_ITERATIONS:-0}"  # 0 = run until stopped
 PROMPT_FILE="${PROMPT_FILE:-$REPO/agents/RUN_AGENTS.md}"
@@ -126,6 +128,8 @@ run_agent() {
     --disallowedTools Bash WebFetch WebSearch
     --output-format text)
   [ -n "$MODEL" ] && cmd+=(--model "$MODEL")
+  [ -n "$EFFORT" ] && cmd+=(--effort "$EFFORT")
+  [ -n "$MAX_BUDGET_USD" ] && cmd+=(--max-budget-usd "$MAX_BUDGET_USD")
 
   while [ ! -f "$STOP_FILE" ]; do
     i=$((i + 1))

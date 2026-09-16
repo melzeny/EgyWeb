@@ -1,7 +1,8 @@
 {
   "company": {
-    "name": "Electro Motion",
-    "domain": "electmotion (TLD to be confirmed by owner; email currently assumed as info@electmotion.com)",
+    "name": "Electro Motion (always two words in text; the domain is electmotion.com)",
+    "domain": "electmotion.com (confirmed; production URL https://electmotion.com)",
+    "email": "info@electmotion.com (placeholder mailbox until the owner confirms it)",
     "what_we_do": "Egyptian company that imports and supplies cables and electrical components for infrastructure, utilities and railways.",
     "location": "Cairo, Egypt",
     "audiences": ["EPC and civil contractors", "railway and metro authorities and operators", "utility and substation engineers", "consultants reviewing technical submittals", "procurement teams"],
