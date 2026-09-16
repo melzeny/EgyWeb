@@ -126,7 +126,7 @@ run_agent() {
     --permission-mode acceptEdits
     --allowedTools Read Edit Write Glob Grep mcp__electmotion
     --disallowedTools Bash WebFetch WebSearch
-    --output-format text)
+    --output-format stream-json --include-partial-messages --verbose)
   [ -n "$MODEL" ] && cmd+=(--model "$MODEL")
   [ -n "$EFFORT" ] && cmd+=(--effort "$EFFORT")
   [ -n "$MAX_BUDGET_USD" ] && cmd+=(--max-budget-usd "$MAX_BUDGET_USD")
@@ -134,7 +134,7 @@ run_agent() {
   while [ ! -f "$STOP_FILE" ]; do
     i=$((i + 1))
     if [ "$MAX_ITERATIONS" -gt 0 ] && [ "$i" -gt "$MAX_ITERATIONS" ]; then break; fi
-    log="$LOG_DIR/$agent-$(date '+%Y%m%d-%H%M%S').log"
+    log="$LOG_DIR/$agent-$(date '+%Y%m%d-%H%M%S').jsonl"
     started="$(date '+%Y-%m-%dT%H:%M:%S')"
     say "[$agent] iteration $i → $log"
 
@@ -145,14 +145,29 @@ run_agent() {
 
     (cd "$WORKTREE" && "${cmd[@]}") </dev/null >"$log" 2>&1 &
     local pid=$!
-    ( sleep "$ITERATION_TIMEOUT" && kill "$pid" 2>/dev/null && echo "[runner] iteration timed out" >>"$log" ) &
+    ( sleep "$ITERATION_TIMEOUT" && kill "$pid" 2>/dev/null && echo '{"type":"runner","event":"timeout"}' >>"$log" ) &
     local watchdog=$!
     wait "$pid"; rc=$?
     kill "$watchdog" 2>/dev/null; wait "$watchdog" 2>/dev/null
 
     commit_changes "$agent" "$started"
 
-    out="$(tail -n 5 "$log")"
+    # The final "result" line carries the agent's last reply; that's what IDLE detection reads.
+    out="$(python3 -c "
+import json, sys
+text = ''
+for line in open(sys.argv[1]):
+    line = line.strip()
+    if not line:
+        continue
+    try:
+        obj = json.loads(line)
+    except ValueError:
+        continue
+    if obj.get('type') == 'result':
+        text = obj.get('result', '')
+print(text)
+" "$log" 2>/dev/null)"
     if [ "$rc" -ne 0 ]; then
       failures=$((failures + 1))
       local backoff=$((SLEEP_BETWEEN * 2 ** (failures < 5 ? failures : 5)))
