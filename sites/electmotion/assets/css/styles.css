@@ -14,7 +14,7 @@
   --text: #0f1724;
   --text-muted: #506079;
   --volt: #ffc21a;
-  --volt-deep: #e0a500;
+  --volt-deep: #8a6400; /* darkened from #e0a500 for WCAG AA text contrast on paper/white (a11y pass) */
   --arc: #2ad4f5;
   --line: #dde3eb;
 
@@ -46,7 +46,14 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; }
 h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; margin: 0 0 .5em; letter-spacing: -.02em; }
 p { margin: 0 0 1em; }
-:focus-visible { outline: 2px solid var(--arc); outline-offset: 3px; border-radius: 4px; }
+/* Halo focus ring: a light outline framed by a dark ring so it meets 3:1 contrast
+   against both the dark chrome and the light content sections (a11y pass). */
+:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--ink-900);
+  border-radius: 4px;
+}
 
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .skip-link { position: absolute; left: -9999px; top: 8px; background: var(--volt); color: var(--ink-950); padding: 8px 14px; border-radius: 6px; z-index: 100; }
@@ -323,7 +330,7 @@ p { margin: 0 0 1em; }
   transition: border-color .2s, box-shadow .2s, background .2s;
 }
 .field textarea { min-height: 130px; resize: vertical; }
-.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--arc); background: var(--white); box-shadow: 0 0 0 3px rgba(42, 212, 245, .18); }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--ink-900); background: var(--white); box-shadow: 0 0 0 3px rgba(11, 17, 27, .22); }
 .form .btn { width: 100%; justify-content: center; margin-top: 6px; }
 .form-note { font-size: 13px; color: var(--text-muted); margin: 12px 0 0; text-align: center; }
 .form-status { margin-top: 12px; font-size: 14px; font-weight: 600; text-align: center; min-height: 1.2em; }
