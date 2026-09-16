@@ -376,6 +376,16 @@ p { margin: 0 0 1em; }
 }
 .disclaimer { font-size: 13.5px; color: var(--text-muted); margin-top: 28px; }
 
+/* ---------- Quote checklist (products.html cards) ---------- */
+.quote-list { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0 0 20px; }
+.quote-list h3 { font: 600 12px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); margin: 0 0 10px; }
+.quote-list ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 16px; }
+.quote-list li { display: flex; align-items: flex-start; gap: 7px; font-size: 13.5px; }
+.quote-list li svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--volt); }
+@media (max-width: 520px) {
+  .quote-list ul { grid-template-columns: 1fr; }
+}
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink-950); color: var(--steel-400); padding: 72px 0 28px; margin-top: 0; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 36px; }
