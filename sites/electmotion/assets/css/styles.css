@@ -404,6 +404,15 @@ p { margin: 0 0 1em; }
 [dir="rtl"] .faq-item summary { padding: 16px 0 16px 28px; }
 [dir="rtl"] .faq-item summary::after { right: auto; left: 2px; }
 
+/* ---------- Glossary ---------- */
+.glossary-list { display: grid; gap: 14px; max-width: 880px; margin: 0 auto; }
+.glossary-item { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 22px 28px; display: grid; grid-template-columns: 200px 1fr; gap: 6px 28px; }
+.glossary-item dt { font: 600 18px/1.3 var(--font-display); color: var(--ink-900); }
+.glossary-item dd { margin: 0; color: var(--text-muted); font-size: 15.5px; line-height: 1.6; }
+@media (max-width: 640px) {
+  .glossary-item { grid-template-columns: 1fr; gap: 4px; }
+}
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink-950); color: var(--steel-400); padding: 72px 0 28px; margin-top: 0; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 36px; }

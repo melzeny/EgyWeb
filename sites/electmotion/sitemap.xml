@@ -29,6 +29,9 @@
     <loc>https://electmotion.com/quality.html</loc>
   </url>
   <url>
+    <loc>https://electmotion.com/glossary.html</loc>
+  </url>
+  <url>
     <loc>https://electmotion.com/ar/index.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/index.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/index.html"/>
