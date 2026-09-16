@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "electmotion": {
+      "command": "python3",
+      "args": ["agents/mcp-server/server.py"]
+    }
+  }
+}

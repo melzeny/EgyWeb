@@ -1,0 +1,38 @@
+{
+  "company": {
+    "name": "Electro Motion",
+    "domain": "electmotion (TLD to be confirmed by owner; email currently assumed as info@electmotion.com)",
+    "what_we_do": "Egyptian company that imports and supplies cables and electrical components for infrastructure, utilities and railways.",
+    "location": "Cairo, Egypt",
+    "audiences": ["EPC and civil contractors", "railway and metro authorities and operators", "utility and substation engineers", "consultants reviewing technical submittals", "procurement teams"],
+    "sectors": ["Railways & Metro", "Power & Utilities", "Infrastructure", "Industrial & Energy"],
+    "product_families": ["MV & HV power cables", "LV power & control cables", "Railway & signalling cables", "Fibre optic & data", "Joints & terminations", "Overhead line equipment", "Switchgear components", "Earthing & protection"]
+  },
+  "content_rules": [
+    "NEVER invent facts: no founding year, client names, project references, certifications (ISO etc.), manufacturer partnerships, statistics, phone numbers, addresses or testimonials. If a page needs one, use neutral wording or release the task as blocked with what the owner must supply.",
+    "Standards (IEC/EN/ITU) may be named as specifications we source against, never as certifications we hold.",
+    "Product ranges are 'typical' and 'subject to project specification'.",
+    "Voice: confident, technical, concise. British English spelling (fibre, programme). Short sentences. No hype words like 'world-class' or 'best-in-class'.",
+    "Every page: one h1, meta description 50-170 chars, lang attribute, skip link, shared header/footer, loads assets/css/styles.css and assets/js/main.js.",
+    "Arabic pages live under /ar/ with <html lang=\"ar\" dir=\"rtl\"> and use the Cairo or IBM Plex Sans Arabic font. Arabic must be natural Modern Standard Arabic suitable for Egyptian business readers."
+  ],
+  "design": {
+    "tokens": "Defined as CSS custom properties at the top of assets/css/styles.css. Reuse them; do not introduce new colours without adding a token.",
+    "palette": {"ink-950": "#070b12", "ink-900": "#0b111b", "paper": "#f4f6f9", "volt (primary accent)": "#ffc21a", "arc (secondary accent)": "#2ad4f5"},
+    "fonts": {"display": "Space Grotesk", "body": "Inter"},
+    "style": "Dark high-voltage chrome (header, hero, CTA, footer) around light readable sections. Line-art SVG illustrations with animated 'current flow' dashes. Rounded 14px cards, generous whitespace.",
+    "constraints": [
+      "Static site only: plain HTML/CSS/JS, no build step, no frameworks, no npm.",
+      "External requests only to Google Fonts. Inline SVG for all icons and illustrations; no stock photos unless the owner supplies them.",
+      "Mobile first; test mentally at 360px width. No horizontal scroll.",
+      "Respect prefers-reduced-motion. Keep total page weight small.",
+      "Relative links between pages (products.html, index.html#contact) so Cloudflare Pages previews work."
+    ]
+  },
+  "definition_of_done": [
+    "site_validate reports no issues",
+    "No invented facts (see content_rules)",
+    "Consistent header/footer/nav across every page, including links to any new page",
+    "Works at 360px and 1440px widths"
+  ]
+}
