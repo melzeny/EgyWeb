@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="ogTitle ogDesc">
+  <title id="ogTitle">Electro Motion</title>
+  <desc id="ogDesc">Electro Motion — importer and supplier of cables and electrical components for railways, power and utilities, and infrastructure projects in Egypt.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#070b12"/>
+      <stop offset="1" stop-color="#111a28"/>
+    </linearGradient>
+    <linearGradient id="wordmarkAccent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffc21a"/>
+      <stop offset="1" stop-color="#2ad4f5"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".04"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- current-flow line art: three conductor lines running across the card -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M-40 460c220-60 300 40 520-10s300-90 500-30" stroke="#1a2638" stroke-width="3"/>
+    <path d="M-40 460c220-60 300 40 520-10s300-90 500-30" stroke="#ffc21a" stroke-width="3" stroke-dasharray="6 26" opacity=".9"/>
+    <path d="M-40 520c240-40 320 30 540-4s280-70 500-20" stroke="#1a2638" stroke-width="3"/>
+    <path d="M-40 520c240-40 320 30 540-4s280-70 500-20" stroke="#2ad4f5" stroke-width="3" stroke-dasharray="6 26" opacity=".7"/>
+  </g>
+
+  <!-- logo mark -->
+  <g transform="translate(96,96)">
+    <rect width="88" height="88" rx="20" fill="#111a28"/>
+    <rect x="1" y="1" width="86" height="86" rx="19" fill="none" stroke="#ffc21a" stroke-opacity=".35" stroke-width="2"/>
+    <path d="M24 24h24.2M24 44h17.6M24 64h24.2M24 24v40" stroke="#fff" stroke-width="6.6" stroke-linecap="round" fill="none"/>
+    <path d="M62.7 19.8 50.6 46.6h11l-4.4 22 15.4-30.8h-11l4.4-17.9z" fill="#ffc21a"/>
+  </g>
+
+  <text x="96" y="272" font-family="Space Grotesk, Arial, sans-serif" font-weight="700" font-size="66" fill="#ffffff">Electro<tspan fill="url(#wordmarkAccent)"> Motion</tspan></text>
+
+  <text x="96" y="330" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="2" fill="#ffc21a">CABLES &amp; ELECTRICAL COMPONENTS</text>
+
+  <text x="96" y="392" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="28" fill="#c7d0dc">Importer and supplier for railways, power</text>
+  <text x="96" y="428" font-family="Inter, Arial, sans-serif" font-weight="400" font-size="28" fill="#c7d0dc">&amp; utilities, and infrastructure projects in Egypt</text>
+
+  <g transform="translate(96,470)" font-family="Inter, Arial, sans-serif" font-size="18" fill="#8593a8">
+    <circle cx="6" cy="-5" r="4" fill="#2ad4f5"/>
+    <text x="20" y="0">electmotion.com</text>
+  </g>
+</svg>
