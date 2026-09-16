@@ -393,6 +393,17 @@ p { margin: 0 0 1em; }
   .quote-list ul { grid-template-columns: 1fr; }
 }
 
+/* ---------- FAQ ---------- */
+.faq-list { max-width: 800px; margin: 0 auto; display: grid; gap: 12px; }
+.faq-item { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 4px 20px; }
+.faq-item summary { list-style: none; cursor: pointer; padding: 16px 28px 16px 0; font: 600 16px/1.4 var(--font-display); color: var(--ink-900); position: relative; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: ""; position: absolute; top: 50%; right: 2px; width: 11px; height: 11px; border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted); transform: translateY(-65%) rotate(45deg); transition: transform .2s ease; }
+.faq-item[open] summary::after { transform: translateY(-35%) rotate(-135deg); }
+.faq-item p { margin: 0 0 18px; color: var(--text-muted); font-size: 15px; }
+[dir="rtl"] .faq-item summary { padding: 16px 0 16px 28px; }
+[dir="rtl"] .faq-item summary::after { right: auto; left: 2px; }
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink-950); color: var(--steel-400); padding: 72px 0 28px; margin-top: 0; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 36px; }
