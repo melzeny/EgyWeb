@@ -220,6 +220,7 @@ p { margin: 0 0 1em; }
   background: var(--ink-900); color: var(--white); padding: 30px 28px; min-height: 320px;
   display: flex; flex-direction: column; justify-content: flex-end;
   isolation: isolate; transition: transform .25s ease, box-shadow .25s ease;
+  text-decoration: none;
 }
 .sector:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .sector .sector-art { position: absolute; inset: 0; z-index: -1; opacity: .9; }
