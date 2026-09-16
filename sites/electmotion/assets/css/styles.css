@@ -94,7 +94,8 @@ p { margin: 0 0 1em; }
 }
 .nav a:hover, .nav a[aria-current="page"] { color: var(--white); background: rgba(255, 255, 255, .07); }
 .nav .btn { margin-left: 10px; padding: .7em 1.15em; }
-.nav .btn:hover { background: #ffcd45; color: var(--ink-950); }
+.nav a.btn-primary { color: var(--ink-950); background: var(--volt); }
+.nav a.btn-primary:hover { background: #ffcd45; color: var(--ink-950); }
 
 .nav-toggle {
   display: none; width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, .15);

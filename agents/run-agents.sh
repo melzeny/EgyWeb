@@ -139,7 +139,7 @@ run_agent() {
       break
     fi
 
-    (cd "$WORKTREE" && "${cmd[@]}") >"$log" 2>&1 &
+    (cd "$WORKTREE" && "${cmd[@]}") </dev/null >"$log" 2>&1 &
     local pid=$!
     ( sleep "$ITERATION_TIMEOUT" && kill "$pid" 2>/dev/null && echo "[runner] iteration timed out" >>"$log" ) &
     local watchdog=$!
@@ -172,7 +172,7 @@ case "${1:-start}" in
   start)
     # Keep the Mac awake while agents run.
     if [ "$DRY_RUN" != "1" ] && command -v caffeinate >/dev/null && [ -z "${EM_CAFFEINATED:-}" ]; then
-      EM_CAFFEINATED=1 exec caffeinate -is "$0" "$@"
+      EM_CAFFEINATED=1 exec caffeinate -is "$0" ${1+"$@"}
     fi
     setup
     say "Starting $AGENTS agent(s) on branch $BRANCH in $WORKTREE (push=$PUSH)"
