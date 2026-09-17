@@ -24,6 +24,9 @@
   </url>
   <url>
     <loc>https://electmotion.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/about.html"/>
   </url>
   <url>
     <loc>https://electmotion.com/quality.html</loc>
@@ -48,5 +51,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/railways.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/railways.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/railways.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/about.html"/>
   </url>
 </urlset>
