@@ -426,9 +426,28 @@ p { margin: 0 0 1em; }
 .footer-bottom { margin-top: 56px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .08); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 13.5px; }
 
 /* ---------- 404 ---------- */
-.notfound { min-height: 100vh; display: grid; place-items: center; text-align: center; color: var(--white); background: var(--ink-950); padding: 24px; }
-.notfound .code { font: 700 clamp(90px, 18vw, 180px)/1 var(--font-display); background: linear-gradient(90deg, var(--volt), var(--arc)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.notfound p { color: var(--steel-200); }
+.notfound {
+  position: relative; overflow: hidden; min-height: 100vh; display: grid; place-items: center;
+  text-align: center; color: var(--white); padding: 24px;
+  background:
+    radial-gradient(900px 520px at 82% 12%, rgba(42, 212, 245, .16), transparent 60%),
+    radial-gradient(700px 480px at 12% 88%, rgba(42, 212, 245, .07), transparent 60%),
+    var(--ink-950);
+}
+.notfound::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 25%, transparent 75%);
+}
+.notfound-inner { position: relative; max-width: 520px; }
+.notfound .brand { display: flex; justify-content: center; margin-bottom: 36px; }
+.notfound .eyebrow { display: flex; justify-content: center; color: var(--arc); }
+.notfound .eyebrow::before { display: none; }
+.notfound .code { font: 700 clamp(84px, 16vw, 150px)/1 var(--font-display); background: linear-gradient(90deg, var(--arc), var(--steel-200)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.notfound h1 { font-size: clamp(24px, 3.4vw, 34px); margin-top: 6px; }
+.notfound .lede { color: var(--steel-200); margin: 14px auto 32px; max-width: 420px; }
+.notfound-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px; }
 
 /* ---------- Reveal on scroll ---------- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }

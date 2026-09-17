@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found — Electro Motion</title>
   <meta name="description" content="The page you are looking for could not be found on the Electro Motion website.">
+  <meta name="theme-color" content="#070b12">
   <meta name="robots" content="noindex">
   <link rel="alternate" hreflang="en" href="https://electmotion.com/404.html">
   <link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/404.html">
@@ -16,13 +17,26 @@
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="10" fill="#111a28"/><rect x=".5" y=".5" width="39" height="39" rx="9.5" fill="none" stroke="#ffc21a" stroke-opacity=".35"/><path d="M11 11h11M11 20h8M11 29h11M11 11v18" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M28.5 9 23 21h5l-2 10 7-14h-5l2-8z" fill="#ffc21a"/></symbol>
+    </defs>
+  </svg>
   <main class="notfound">
-    <div>
+    <div class="notfound-inner">
+      <a class="brand" href="/" aria-label="Electro Motion home">
+        <svg aria-hidden="true"><use href="#logo"/></svg>
+        <span class="brand-name">Electro<span>Motion</span></span>
+      </a>
+      <p class="eyebrow">Error 404</p>
       <div class="code">404</div>
       <h1>This circuit is open</h1>
-      <p>The page you're looking for doesn't exist or has moved.</p>
-      <p><a class="btn btn-primary" href="/">Back to homepage</a></p>
-      <p><a class="lang-switch" href="/ar/404.html" hreflang="ar" lang="ar">العربية</a></p>
+      <p class="lede">The page you're looking for doesn't exist or has moved.</p>
+      <div class="notfound-actions">
+        <a class="btn btn-primary" href="/">Back to homepage <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="lang-switch" href="/ar/404.html" hreflang="ar" lang="ar">العربية</a>
+      </div>
     </div>
   </main>
 </body>
