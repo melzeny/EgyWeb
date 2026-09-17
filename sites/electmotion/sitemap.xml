@@ -39,6 +39,9 @@
   </url>
   <url>
     <loc>https://electmotion.com/glossary.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/glossary.html"/>
   </url>
   <url>
     <loc>https://electmotion.com/ar/index.html</loc>
@@ -75,5 +78,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/quality.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/quality.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/quality.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/glossary.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/glossary.html"/>
   </url>
 </urlset>
