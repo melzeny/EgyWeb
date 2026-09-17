@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://electmotion.com/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/index.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/products.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/products.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/products.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/products.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/railways.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/railways.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/railways.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/railways.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/power-utilities.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/power-utilities.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/power-utilities.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/power-utilities.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/quality.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/quality.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/quality.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/quality.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/glossary.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/glossary.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/index.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/index.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/products.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/products.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/products.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/products.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/railways.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/railways.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/railways.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/railways.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/power-utilities.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/power-utilities.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/power-utilities.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/power-utilities.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/quality.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/quality.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/quality.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/quality.html"/>
+  </url>
+  <url>
+    <loc>https://electmotion.com/ar/glossary.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://electmotion.com/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://electmotion.com/ar/glossary.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://electmotion.com/glossary.html"/>
+  </url>
+</urlset>

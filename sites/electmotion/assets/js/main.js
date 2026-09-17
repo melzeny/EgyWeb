@@ -14,11 +14,17 @@
     const setOpen = (open) => {
       header.classList.toggle("is-open", open);
       toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       document.body.style.overflow = open ? "hidden" : "";
     };
     toggle.addEventListener("click", () => setOpen(!header.classList.contains("is-open")));
     header.querySelectorAll(".nav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && header.classList.contains("is-open")) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
   }
 
   // Reveal on scroll
@@ -51,17 +57,10 @@
   };
   chips.forEach((chip) => chip.addEventListener("click", () => applyFilter(chip.dataset.filter)));
 
-  // Contact form: opens the visitor's mail client with a pre-filled enquiry
+  // Contact form: submits to the Pages Function; falls back to the mail client if that fails
   const form = document.querySelector("#quote-form");
   if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const status = form.querySelector(".form-status");
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
-      const data = new FormData(form);
+    const openMailto = (data) => {
       const subject = `Quote request — ${data.get("company") || data.get("name")}`;
       const body = [
         `Name: ${data.get("name")}`,
@@ -74,7 +73,38 @@
       ].join("\n");
       const to = form.dataset.mailto;
       window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      if (status) status.textContent = "Your email app should open with the enquiry ready to send.";
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const status = form.querySelector(".form-status");
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const data = new FormData(form);
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) submitBtn.disabled = true;
+      if (status) status.textContent = "Sending your enquiry…";
+
+      try {
+        const payload = Object.fromEntries(data.entries());
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error("Request failed");
+        const result = await res.json();
+        if (!result.ok) throw new Error(result.error || "Request failed");
+        if (status) status.textContent = "Thank you — your enquiry has been received. We'll be in touch shortly.";
+        form.reset();
+      } catch (err) {
+        openMailto(data);
+        if (status) status.textContent = "Your email app should open with the enquiry ready to send.";
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
   }
 })();
