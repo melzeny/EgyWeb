@@ -30,6 +30,39 @@
     "email": "info@electmotion.com"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "ما هي مدة التوريد؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "تعتمد مدة التوريد على المنتج والكمية وبلد المنشأ. بمجرد معرفة مواصفاتكم، يمكننا تزويدكم بجدول زمني تقريبي مع عرض السعر." }
+      },
+      {
+        "@type": "Question",
+        "name": "هل هناك حد أدنى لكمية الطلب؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "يختلف الحد الأدنى لكمية الطلب حسب المنتج والمُصنِّع. شاركونا متطلباتكم وسنؤكد ما ينطبق قبل التزامكم بالطلبية." }
+      },
+      {
+        "@type": "Question",
+        "name": "ما المستندات التي تقدمونها؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "نُعِدّ المستندات الفنية المطلوبة للاعتماد، مثل النشرات الفنية وشهادات الاختبار، بما يتوافق مع المواصفة التي يحددها مشروعكم." }
+      },
+      {
+        "@type": "Question",
+        "name": "هل توفرون التسليم في جميع أنحاء مصر؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "نعم. نرتب التسليم إلى موقعكم أو مستودعكم في أي مكان بمصر ضمن الطلبية." }
+      },
+      {
+        "@type": "Question",
+        "name": "كيف أرسل جدول كميات أو جدول كابلات؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "أرفقوه في رسالة بريد إلكتروني أو استخدموا نموذج الاستفسار أدناه. أدرجوا الجهد والمقاس والكمية والمواصفة المعتمدة إن وُجدت، وسنتابع بعرض مطابق." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -369,6 +402,39 @@
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="section section-white" id="faq">
+      <div class="container">
+        <div class="section-head center reveal">
+          <p class="eyebrow">الأسئلة الشائعة</p>
+          <h2>أسئلة متكررة</h2>
+          <p>إجابات عن الأسئلة الأكثر شيوعًا من المقاولين وفرق المشتريات.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details class="faq-item">
+            <summary>ما هي مدة التوريد؟</summary>
+            <p>تعتمد مدة التوريد على المنتج والكمية وبلد المنشأ. بمجرد معرفة مواصفاتكم، يمكننا تزويدكم بجدول زمني تقريبي مع عرض السعر.</p>
+          </details>
+          <details class="faq-item">
+            <summary>هل هناك حد أدنى لكمية الطلب؟</summary>
+            <p>يختلف الحد الأدنى لكمية الطلب حسب المنتج والمُصنِّع. شاركونا متطلباتكم وسنؤكد ما ينطبق قبل التزامكم بالطلبية.</p>
+          </details>
+          <details class="faq-item">
+            <summary>ما المستندات التي تقدمونها؟</summary>
+            <p>نُعِدّ المستندات الفنية المطلوبة للاعتماد، مثل النشرات الفنية وشهادات الاختبار، بما يتوافق مع المواصفة التي يحددها مشروعكم.</p>
+          </details>
+          <details class="faq-item">
+            <summary>هل توفرون التسليم في جميع أنحاء مصر؟</summary>
+            <p>نعم. نرتب التسليم إلى موقعكم أو مستودعكم في أي مكان بمصر ضمن الطلبية.</p>
+          </details>
+          <details class="faq-item">
+            <summary>كيف أرسل جدول كميات أو جدول كابلات؟</summary>
+            <p>أرفقوه في رسالة بريد إلكتروني أو استخدموا نموذج الاستفسار أدناه. أدرجوا الجهد والمقاس والكمية والمواصفة المعتمدة إن وُجدت، وسنتابع بعرض مطابق.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- CTA -->
     <section class="section" style="padding-bottom:0">
       <div class="container">
@@ -398,6 +464,10 @@
           </ul>
         </div>
         <form class="form reveal" id="quote-form" data-mailto="info@electmotion.com" novalidate>
+          <div class="field visually-hidden" aria-hidden="true">
+            <label for="f-company-site">اتركوا هذا الحقل فارغًا</label>
+            <input id="f-company-site" name="company_site" tabindex="-1" autocomplete="off">
+          </div>
           <div class="form-row">
             <div class="field"><label for="f-name">الاسم الكامل</label><input id="f-name" name="name" autocomplete="name" required></div>
             <div class="field"><label for="f-company">الشركة</label><input id="f-company" name="company" autocomplete="organization"></div>
