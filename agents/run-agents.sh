@@ -6,6 +6,9 @@
 # Agents work in a separate git worktree on $BRANCH (never on main), coordinate through the
 # electmotion MCP server, and every iteration's changes under sites/electmotion are committed
 # (and pushed when PUSH=1, which gives a Cloudflare Pages preview deployment per commit).
+# Once you run `stop` and the agents finish their current iteration, $BRANCH is merged into
+# $BASE_BRANCH (main) and pushed automatically (set MERGE_ON_STOP=0 to disable), then $BRANCH
+# is reset to match main so the next run starts clean from it.
 set -uo pipefail
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
@@ -23,6 +26,8 @@ ITERATION_TIMEOUT="${ITERATION_TIMEOUT:-2700}"
 MAX_ITERATIONS="${MAX_ITERATIONS:-0}"  # 0 = run until stopped
 PROMPT_FILE="${PROMPT_FILE:-$REPO/agents/RUN_AGENTS.md}"
 DRY_RUN="${DRY_RUN:-0}"
+MERGE_ON_STOP="${MERGE_ON_STOP:-1}"  # after agents finish, merge $BRANCH into $BASE_BRANCH and reset $BRANCH from it
+MERGE_REPO="${MERGE_REPO:-$REPO/agents/state/merge-repo}"
 
 STATE_DIR="$REPO/agents/state"
 LOG_DIR="$STATE_DIR/logs"
@@ -118,6 +123,52 @@ commit_changes() {
   rmdir "$GIT_LOCK"
 }
 
+merge_to_main() {
+  [ "$MERGE_ON_STOP" = "1" ] || return 0
+  local origin_url ok=1
+  origin_url="$(git -C "$REPO" remote get-url origin 2>/dev/null)" || {
+    say "no 'origin' remote; skipping auto-merge of $BRANCH into $BASE_BRANCH"
+    return 0
+  }
+
+  until mkdir "$GIT_LOCK" 2>/dev/null; do sleep 2; done
+
+  # Merge in a standalone clone of origin, never in $REPO or $WORKTREE, so this can never
+  # collide with a branch already checked out there (e.g. you sitting on main yourself).
+  if [ ! -d "$MERGE_REPO/.git" ]; then
+    git clone -q "$origin_url" "$MERGE_REPO" || { say "merge: clone of $origin_url failed"; ok=0; }
+  fi
+  [ "$ok" = 1 ] && { git -C "$MERGE_REPO" fetch -q origin "$BASE_BRANCH" || { say "merge: fetch $BASE_BRANCH failed"; ok=0; }; }
+  [ "$ok" = 1 ] && { git -C "$MERGE_REPO" checkout -q -B "$BASE_BRANCH" "origin/$BASE_BRANCH" || { say "merge: checkout $BASE_BRANCH failed"; ok=0; }; }
+  [ "$ok" = 1 ] && { git -C "$MERGE_REPO" fetch -q "$WORKTREE" "$BRANCH" || { say "merge: fetch $BRANCH from worktree failed"; ok=0; }; }
+
+  if [ "$ok" = 1 ]; then
+    if git -C "$MERGE_REPO" merge -q --no-edit FETCH_HEAD -m "electmotion: merge $BRANCH into $BASE_BRANCH (autonomous agents)"; then
+      if git -C "$MERGE_REPO" push -q origin "$BASE_BRANCH"; then
+        say "merged $BRANCH into $BASE_BRANCH and pushed"
+      else
+        say "merge: push of $BASE_BRANCH failed; merge commit is sitting in $MERGE_REPO, push it manually"
+        ok=0
+      fi
+    else
+      say "merge: conflict merging $BRANCH into $BASE_BRANCH; resolve manually in $MERGE_REPO, then re-run"
+      git -C "$MERGE_REPO" merge --abort 2>/dev/null
+      ok=0
+    fi
+  fi
+
+  if [ "$ok" = 1 ]; then
+    # Fold main back into the agent branch so the next run starts from exactly what's on main.
+    if git -C "$WORKTREE" fetch -q "$MERGE_REPO" "$BASE_BRANCH" && git -C "$WORKTREE" reset -q --hard FETCH_HEAD; then
+      say "reset $BRANCH to match $BASE_BRANCH; next run starts from main"
+    else
+      say "merge: pushed $BASE_BRANCH but failed to reset $BRANCH from it; fix the worktree manually"
+    fi
+  fi
+
+  rmdir "$GIT_LOCK" 2>/dev/null
+}
+
 run_agent() {
   local agent="$1" i=0 failures=0 rc out log started prompt
   prompt="$(prompt_for "$agent")" || exit 1
@@ -187,7 +238,8 @@ print(text)
 
 case "${1:-start}" in
   status) status ;;
-  stop) mkdir -p "$STATE_DIR"; touch "$STOP_FILE"; echo "Stop requested. Agents exit after their current iteration." ;;
+  stop) mkdir -p "$STATE_DIR"; touch "$STOP_FILE"; echo "Stop requested. Agents exit after their current iteration, then $BRANCH is merged into $BASE_BRANCH." ;;
+  merge) merge_to_main ;;
   start)
     # Keep the Mac awake while agents run.
     if [ "$DRY_RUN" != "1" ] && command -v caffeinate >/dev/null && [ -z "${EM_CAFFEINATED:-}" ]; then
@@ -201,6 +253,7 @@ case "${1:-start}" in
       sleep 5
     done
     wait
+    merge_to_main
     ;;
-  *) echo "usage: $0 [start|status|stop]"; exit 2 ;;
+  *) echo "usage: $0 [start|status|stop|merge]"; exit 2 ;;
 esac
